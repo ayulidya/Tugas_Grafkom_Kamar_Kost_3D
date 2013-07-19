@@ -130,7 +130,7 @@ Image * loadTexture2() {
 		exit(0);
 	}
 	//pic.bmp is a 64x64 picture
-	if (!ImageLoad("tembok1.bmp", image2)) {
+	if (!ImageLoad("tembok.bmp", image2)) {
 		exit(1);
 	}
 	return image2;
@@ -172,7 +172,7 @@ Image * loadTexture5() {
 		printf("Error allocating space for image");
 		exit(0);
 	}
-	if (!ImageLoad("dwi3.bmp", image5)) {
+	if (!ImageLoad("texture.bmp", image5)) {
 		exit(1);
 	}
 	return image5;
@@ -211,7 +211,7 @@ Image * loadTexture8() {
 		printf("Error allocating space for image");
 		exit(0);
 	}
-	if (!ImageLoad("dwi2.bmp", image8)) {
+	if (!ImageLoad("jamdinding.bmp", image8)) {
 		exit(1);
 	}
 	return image8;
@@ -282,6 +282,33 @@ Image * loadTexture13() {
 	}
 	return image13;
 } 
+Image * loadTexture14() {
+	Image *image14;
+	// alokasi memmory untuk tekstur
+	image14 = (Image *) malloc(sizeof(Image));
+	if (image14 == NULL) {
+		printf("Error allocating space for image");
+		exit(0);
+	}
+	if (!ImageLoad("texture.bmp", image14)) {
+		exit(1);
+	}
+	return image14;
+} 
+Image * loadTexture15() {
+	Image *image15;
+	// alokasi memmory untuk tekstur
+	image15 = (Image *) malloc(sizeof(Image));
+	if (image15 == NULL) {
+		printf("Error allocating space for image");
+		exit(0);
+	}
+	if (!ImageLoad("walpaper.bmp", image15)) {
+		exit(1);
+	}
+	return image15;
+} 
+
 
 void myinit(void)
 {
@@ -305,6 +332,8 @@ void myinit(void)
     Image *image11 = loadTexture11();
     Image *image12 = loadTexture12();
     Image *image13 = loadTexture13();
+    Image *image14 = loadTexture14();
+    Image *image15 = loadTexture15();
  
 	if (image1 == NULL) {
 		printf("Image was not returned from loadTexture\n");
@@ -358,14 +387,22 @@ void myinit(void)
 		printf("Image was not returned from loadTexture\n");
 		exit(0);
 	}
+	if (image14 == NULL) {
+		printf("Image was not returned from loadTexture\n");
+		exit(0);
+	}
+	if (image15 == NULL) {
+		printf("Image was not returned from loadTexture\n");
+		exit(0);
+	}
   
   
 
 	// Generate texture/ membuat texture
 	
-	glGenTextures(13,texture);
+	glGenTextures(15,texture);
     
-    //tekstur wall
+    //tekstur kayu lemari
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[1]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -375,7 +412,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image1->sizeX, image1->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image1->data);
 
-	//tekstur lantai
+	//tekstur dinding
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -385,7 +422,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image2->sizeX, image2->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image2->data);
 
-	//tekstur 3
+	//tekstur selimut
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[3]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -395,7 +432,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image3->sizeX, image3->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image3->data);
 
-	//tekstur pintu
+	//tekstur spray
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[4]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -405,7 +442,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image4->sizeX, image4->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image4->data);
 			
-	//tekstur air
+	//tekstur 5
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[5]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -415,7 +452,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image5->sizeX, image5->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image5->data);
 			
-	//tekstur aqua
+	//tekstur lukisan belakang
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[6]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -425,7 +462,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image6->sizeX, image6->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image6->data);
 
-    //tekstur 7
+    //tekstur jendela
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[7]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -435,7 +472,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image7->sizeX, image7->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image7->data);
 
-    //tekstur kaca1
+    //tekstur jam dinding
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[8]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -444,7 +481,7 @@ void myinit(void)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image8->sizeX, image8->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image8->data);
-    //tekstur kaca2
+    //tekstur kayu meja
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[9]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -454,7 +491,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image9->sizeX, image9->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image9->data);
 
-    //tekstur LUKISAN
+    //tekstur televisi
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[10]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -464,7 +501,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image10->sizeX, image10->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image10->data);
 
-    //tekstur LUKISAN
+    //tekstur karpet
 	//binding texture untuk membuat texture 2D
 	glBindTexture(GL_TEXTURE_2D, texture[11]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
@@ -484,7 +521,7 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image12->sizeX, image12->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image12->data);
             
-            //binding texture untuk membuat texture 2D
+            //texture lukisan
 	glBindTexture(GL_TEXTURE_2D, texture[13]);
 	//menyesuaikan ukuran textur ketika image lebih besar dari texture
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //
@@ -493,12 +530,27 @@ void myinit(void)
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, image13->sizeX, image13->sizeY, 0, GL_RGB,
 			GL_UNSIGNED_BYTE, image13->data);		
 
-
+//texture sofa dan komputer
+	glBindTexture(GL_TEXTURE_2D, texture[14]);
+	//menyesuaikan ukuran textur ketika image lebih besar dari texture
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //
+	//menyesuaikan ukuran textur ketika image lebih kecil dari texture
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //
+	glTexImage2D(GL_TEXTURE_2D, 0, 3, image14->sizeX, image14->sizeY, 0, GL_RGB,
+			GL_UNSIGNED_BYTE, image14->data);	
+			//texture layar
+	glBindTexture(GL_TEXTURE_2D, texture[15]);
+	//menyesuaikan ukuran textur ketika image lebih besar dari texture
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //
+	//menyesuaikan ukuran textur ketika image lebih kecil dari texture
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //
+	glTexImage2D(GL_TEXTURE_2D, 0, 3, image15->sizeX, image15->sizeY, 0, GL_RGB,
+			GL_UNSIGNED_BYTE, image15->data);
 
 	glEnable(GL_TEXTURE_2D);	
 	glShadeModel(GL_FLAT);
 }
-
+//void pilar silinder
 void pilar(){
     qobj = gluNewQuadric();	
     gluQuadricDrawStyle(qobj,GLU_FILL);	
@@ -611,13 +663,13 @@ void keyboard(unsigned char key, int x, int y)
 		//horisontal kiri (mengurangi koordinat x)
 		case 'a':
 		a = a + 1;
-		if (a>15) a=15;
+		if (a>25) a=25;
 		glutPostRedisplay();
 		break;
 		//horisontal kanan (menambah koordinat x)
 		case 'd':
 		a = a - 1;
-		if (a<-20) a=-20;
+		if (a<-80) a=80;
 		glutPostRedisplay();
 		break;
 		//memperbesar objek (menambah koordinat z)
@@ -710,6 +762,15 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnd();
 	glPopMatrix();
 	
+		//bantal
+    glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture[3]);
+		glBegin(GL_QUADS);
+		glColor3f(1.1f,1.1f,1.1f);
+			kamar(-22,0.7,-12,-17,2.5,-20);
+
+        glEnd();
+	glPopMatrix();
 	 
 	
 		//lukisan kiri
@@ -765,14 +826,35 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 //komputer
 	glPushMatrix();
-            glBindTexture(GL_TEXTURE_2D, texture[10]);
+            glBindTexture(GL_TEXTURE_2D, texture[14]);
 		glBegin(GL_QUADS);
 		   glColor3f(1.0f,1.0f,1.0f);
-			kamar(-3,3,-1,0,6,-0.5);
+			kamar(-5,3.3,-1,-0.5,6,-0.8);			
+			kamar(-2,3,-1,-3.5,3.5,-0.8);
 		glEnd();
 	glPopMatrix();
-	//tv
+	
+   //layar komputer
+	glPushMatrix();
+            glBindTexture(GL_TEXTURE_2D, texture[15]);
+		glBegin(GL_QUADS);
+		   glColor3f(1.0f,1.0f,1.0f);
+			kamar(-4.8,3.5,-1.1,-0.7,5.8,-1);			
+		glEnd();
+	glPopMatrix(); 
+
+//keyboard
+
     glPushMatrix();
+            glBindTexture(GL_TEXTURE_2D, texture[14]);
+		glBegin(GL_QUADS);
+		   glColor3f(1.0f,1.0f,1.0f);
+			kamar(-4.5,3,-2,-1,3.1,-3.5);			
+		glEnd();
+	glPopMatrix(); 
+    //tv
+    glPushMatrix();
+    
             glBindTexture(GL_TEXTURE_2D, texture[10]);
 		glBegin(GL_QUADS);
 		   glColor3f(1.0f,1.0f,1.0f);
@@ -800,6 +882,76 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 		glEnd();
 	glPopMatrix();
+
+//lantai teras
+         glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, texture[11]);
+		glBegin(GL_QUADS);
+		    glColor3f(1.0f,1.0f,1.0f);
+			kamar(25,0.5,-23,50,-0.5,0);		
+        glEnd();
+	glPopMatrix();
+//kursi teras
+
+glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, texture[14]);
+		glBegin(GL_QUADS);
+		    glColor3f(1.0f,1.0f,1.0f);
+			kamar(30,2,-23,35,3,-18);	
+            kamar(30,0,-23,35,6,-21);
+            kamar(29,0,-23,30,4,-18);
+            kamar(35,0,-23,36,4,-18);	
+        glEnd();
+	glPopMatrix();
+	//kursi teras 2
+glBindTexture(GL_TEXTURE_2D, texture[14]);
+		glBegin(GL_QUADS);
+		    glColor3f(1.0f,1.0f,1.0f);
+			kamar(36.5,2,-12,42,3,-5);
+            kamar(40,-0.5,-12,42,6,-5);	
+           	kamar(36,-0.5,-4,42,4,-4.5);
+           	kamar(36,-0.5,-12.5,42,4,-13);
+        glEnd();
+	glPopMatrix();
+	//meja teras
+    glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, texture[9]);
+		glBegin(GL_QUADS);
+		    glColor3f(1.0f,1.0f,1.0f);
+			kamar(30,2.5,-12,35,3,-5);
+            kamar(30,0,-12,35,3,-5);
+            
+				glEnd();
+	glPopMatrix();
+	
+	
+
+//tiang
+       glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture[2]);
+		glBegin(GL_QUADS);
+		    glColor3f(1.0f,1.0f,1.0f);
+			kamar(40,-0.5,0,42,15,-2);
+			kamar(25,-0.5,0,27,15,-2);
+			kamar(25,-0.5,-21,27,15,-23);
+			kamar(40,-0.5,-21,42,15,-23);
+		glEnd();
+	glPopMatrix();
+//tanah
+ glPushMatrix();
+        glBindTexture(GL_TEXTURE_2D, texture[9]);
+		glBegin(GL_QUADS);
+		    glColor3f(1.0f,1.0f,1.0f);
+			kamar(-30,0,-23,51,-0.5,2);		
+        glEnd();
+	glPopMatrix();
+
+glPushMatrix();
+glScalef(0.35, 0.65, 1);
+glTranslatef(3.5,3.5,-3);
+glColor3f(0,0,0);
+glutSolidCube(5.0);
+glPopMatrix();
 
 
 	glFlush();
