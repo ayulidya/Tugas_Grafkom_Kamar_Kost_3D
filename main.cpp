@@ -1,9 +1,9 @@
 #include <windows.h>
-#include <stdio.h>
+#include <stdio.h>// Header File standar
 #include <GL\glut.h>
-#include <GL\GL.h>
-#include <GL\GLU.h>
-#include <math.h>
+#include <GL\GL.h>// Header File For The Glu32 Library
+#include <GL\GLU.h>// Header File For The OpenGL32 Library
+#include <math.h>//Math Library Header File
 #include <time.h>
 #include <iostream>
 #include <sys/timeb.h>
@@ -969,7 +969,7 @@ void reshape (int w, int h)
 	glTranslatef(0.0, 0.0, 0.0);
 	gluLookAt (0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 }
-
+//konfigurasi dan menampilkan windows
 int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
@@ -984,5 +984,6 @@ int main(int argc, char *argv[])
     glutMainLoop();
 return 0;
 }
+
 
 
